@@ -1,0 +1,141 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #tasks-container {
+            margin-top: 20px;
+        }
+
+        #task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div id="tasks-container">
+            <ul id="task-list">
+                <!-- Tasks will be added dynamically here -->
+            </ul>
+        </div>
+        <input type="text" id="task-input" placeholder="Add a new task">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadTasks();
+        });
+
+        function loadTasks() {
+            // Fetch tasks from the database and dynamically add them to the task-list ul
+            // This will be implemented in your backend
+        }
+
+        function addTask() {
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== '') {
+                // Add the task to the database (using a backend) and then update the UI
+                // This will be implemented in your backend
+                updateUI(taskText);
+                taskInput.value = '';
+            }
+        }
+
+        function updateUI(taskText) {
+            const taskList = document.getElementById('task-list');
+
+            const taskItem = document.createElement('li');
+            taskItem.className = 'task';
+
+            const taskTextElement = document.createElement('span');
+            taskTextElement.textContent = taskText;
+
+            const taskActions = document.createElement('div');
+            taskActions.className = 'task-actions';
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                // Delete the task from the database (using a backend) and then update the UI
+                // This will be implemented in your backend
+                taskList.removeChild(taskItem);
+            };
+
+            taskActions.appendChild(deleteButton);
+            taskItem.appendChild(taskTextElement);
+            taskItem.appendChild(taskActions);
+
+            taskList.appendChild(taskItem);
+        }
+    </script>
+</body>
+
+
+
+
+
+
